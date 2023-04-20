@@ -21,7 +21,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/restart_count'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| align delta(2m)\n| every 2m\n| group_by\n    [resource.project_id, resource.location, resource.cluster_name,\n     resource.container_name],\n    [value_restart_count_aggregate: aggregate(value.restart_count)]"
+                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/restart_count'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| align delta(2m)\n| every 2m\n| group_by\n    [resource.project_id, resource.location, resource.cluster_name,\n     resource.container_name],\n    [value_restart_count_aggregate: aggregate(value.restart_count)]"
               }
             }
           ],
@@ -50,7 +50,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/memory/used_bytes'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| filter (metric.memory_type == 'non-evictable')\n| group_by 1m, [value_used_bytes_mean: mean(value.used_bytes)]\n| every 1m\n"
+                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/memory/used_bytes'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| filter (metric.memory_type == 'non-evictable')\n| group_by 1m, [value_used_bytes_mean: mean(value.used_bytes)]\n| every 1m\n"
               }
             }
           ],
@@ -79,7 +79,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/cpu/core_usage_time'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| align rate(1m)\n| every 1m"
+                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/cpu/core_usage_time'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| align rate(1m)\n| every 1m"
               }
             }
           ],
@@ -108,7 +108,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_pod\n| metric 'kubernetes.io/pod/network/received_bytes_count'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| align rate(1m)\n| every 1m\n"
+                "timeSeriesQueryLanguage": "fetch k8s_pod\n| metric 'kubernetes.io/pod/network/received_bytes_count'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| align rate(1m)\n| every 1m\n"
               }
             }
           ],
@@ -137,7 +137,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_pod\n| metric 'kubernetes.io/pod/network/sent_bytes_count'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| align rate(1m)\n| every 1m\n"
+                "timeSeriesQueryLanguage": "fetch k8s_pod\n| metric 'kubernetes.io/pod/network/sent_bytes_count'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| align rate(1m)\n| every 1m\n"
               }
             }
           ],
@@ -188,7 +188,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/memory/request_utilization'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_request_utilization_mean: mean(value.request_utilization)]\n| every 1m\n| scale '%'"
+                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/memory/request_utilization'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_request_utilization_mean: mean(value.request_utilization)]\n| every 1m\n| scale '%'"
               }
             }
           ],
@@ -217,7 +217,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/memory/limit_utilization'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_limit_utilization_mean: mean(value.limit_utilization)]\n| every 1m\n| scale '%'"
+                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/memory/limit_utilization'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_limit_utilization_mean: mean(value.limit_utilization)]\n| every 1m\n| scale '%'"
               }
             }
           ],
@@ -246,7 +246,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/cpu/request_utilization'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_request_utilization_mean: mean(value.request_utilization)]\n| every 1m\n| scale '%'"
+                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/cpu/request_utilization'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_request_utilization_mean: mean(value.request_utilization)]\n| every 1m\n| scale '%'"
               }
             }
           ],
@@ -275,7 +275,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/cpu/limit_utilization'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_limit_utilization_mean: mean(value.limit_utilization)]\n| every 1m\n| scale '%'"
+                "timeSeriesQueryLanguage": "fetch k8s_container\n| metric 'kubernetes.io/container/cpu/limit_utilization'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_limit_utilization_mean: mean(value.limit_utilization)]\n| every 1m\n| scale '%'"
               }
             }
           ],
@@ -304,7 +304,7 @@
               "plotType": "LINE",
               "targetAxis": "Y1",
               "timeSeriesQuery": {
-                "timeSeriesQueryLanguage": "fetch k8s_pod\n| metric 'kubernetes.io/pod/volume/utilization'\n filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_utilization_mean: mean(value.utilization)]\n| every 1m\n| scale '%'"
+                "timeSeriesQueryLanguage": "fetch k8s_pod\n| metric 'kubernetes.io/pod/volume/utilization'\n| filter (resource.cluster_name =~ '^(awsClusters|azureClusters)\/.*$')\n| group_by 1m, [value_utilization_mean: mean(value.utilization)]\n| every 1m\n| scale '%'"
               }
             }
           ],
